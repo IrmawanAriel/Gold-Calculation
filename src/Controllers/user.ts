@@ -1,4 +1,4 @@
-import e, { Request, Response } from "express";
+import { Request, Response } from "express";
 import { loginUser, getUserByIdOnly, registerUser } from "../Repositories/user";
 import { usersReq, usersLogin, usersRegistration } from "../Models/User/user";
 import bcrypt from "bcrypt";
