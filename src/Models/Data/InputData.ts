@@ -4,6 +4,6 @@ export interface inputDataI {
     berat_basah?: number;
     penaikan_kadar?: number;
     penurunan_kadar?: number;
-    menu: number;
+    menu: string;
     hasil: number;
 }
