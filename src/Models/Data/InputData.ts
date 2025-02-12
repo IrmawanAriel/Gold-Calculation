@@ -5,6 +5,7 @@ export interface inputDataI {
     berat_murni?:number;
     penaikan_kadar?: number;
     penurunan_kadar?: number;
+    kadar_emas?: number;
     menu: string;
     hasil: number;
 }
