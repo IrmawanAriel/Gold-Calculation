@@ -8,7 +8,7 @@ export const jwtOptions: SignOptions = {
   issuer: process.env.JWT_ISSUER,
 };
 
-export const authorization: RequestHandler = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+export const authorization: RequestHandler = async (req: Request, res: Response, next: NextFunction) => {
   const bearerToken = req.header("Authorization");
   const idParam = req.params.id;
 

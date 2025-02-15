@@ -1,11 +1,12 @@
 import { Request, Response } from "express";
-import { loginUser, getUserByIdOnly, registerUser } from "../Repositories/user";
+import { loginUser, getUserByIdOnly, registerUser, getHistory } from "../Repositories/user";
 import { usersReq, usersLogin, usersRegistration } from "../Models/User/user";
 import bcrypt from "bcrypt";
 import Jwt from "jsonwebtoken";
 import { payloadInterface } from "../Models/User/payload";
 import { jwtOptions } from "../Middleware/authorization";
 import { IUsersRes } from "../Models/response";
+import { historyI } from "../Models/Data/History";
 
 export const UserById = async (
   req: Request<{ id: number }, {}, usersReq>,
@@ -135,5 +136,33 @@ export const register = async (req: Request<{}, {}, usersRegistration>, res: Res
           msg: "Error",
           err: "Internal server error",
       });
+  }
+};
+
+export const inputHistory = async (req: Request<{}, {}, usersReq>, res: Response): Promise<void> => {
+  try {
+    const id = req.body.id;
+    const result = await getHistory(id);
+    if (result.rows.length === 0) {
+      res.status(404).json({
+        msg: "data tak ditemukan",
+        data: [],
+      });
+      return;
+    }
+    res.status(200).json({
+      msg: "sucses",
+      data: result.rows,
+    });
+  } catch (err: unknown) {
+    if (err instanceof Error) {
+      console.log(err.message);
+    }
+    res.status(500).json({
+      msg: "error",
+      data: [],
+      err: "gagal mengambil history",
+    });
+    return ;
   }
 };

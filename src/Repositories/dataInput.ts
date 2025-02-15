@@ -27,3 +27,4 @@ export const DataInputHistory = (body: inputDataI): Promise<QueryResult> => {
     const value = [body.user_id, body.berat_kering, body.berat_basah, body.berat_murni, body.penaikan_kadar, body.penurunan_kadar, body.menu, body.kadar_emas, body.hasil]
     return db.query(query, value);
 }
+
