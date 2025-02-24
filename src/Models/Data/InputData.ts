@@ -8,4 +8,5 @@ export interface inputDataI {
     kadar_emas?: number;
     menu: string;
     hasil: number;
+    nama_pelanggan?: string;
 }

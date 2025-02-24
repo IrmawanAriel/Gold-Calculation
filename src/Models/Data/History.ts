@@ -8,4 +8,6 @@ export interface historyI {
     menu: string;
     kadar_emas: number;
     hasil: number;
+    nama_pelanggan: string;
+    created_at: Date;
 }

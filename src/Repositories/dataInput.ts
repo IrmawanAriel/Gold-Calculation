@@ -12,7 +12,8 @@ export const DataInputHistory = (body: inputDataI): Promise<QueryResult> => {
         penurunan_kadar,
         menu,
         kadar_emas,
-        hasil
+        hasil,
+        nama_pelanggan
     ) VALUES (
         $1, 
         $2, 
@@ -22,9 +23,10 @@ export const DataInputHistory = (body: inputDataI): Promise<QueryResult> => {
         $6,
         $7,
         $8,
-        $9 
+        $9,
+        $10 
     )`;
-    const value = [body.user_id, body.berat_kering, body.berat_basah, body.berat_murni, body.penaikan_kadar, body.penurunan_kadar, body.menu, body.kadar_emas, body.hasil]
+    const value = [body.user_id, body.berat_kering, body.berat_basah, body.berat_murni, body.penaikan_kadar, body.penurunan_kadar, body.menu, body.kadar_emas, body.hasil, body.nama_pelanggan];
     return db.query(query, value);
 }
 
